@@ -115,7 +115,7 @@ class SQLServerExtractorIntegrationTest extends SparkAndTmpDirSpec with BeforeAn
     }
     it("should return the metadata if the user-provided pks match the ones from the database") {
       val sqlServerExtractor = new SQLServerExtractor(sparkSession, sqlServerConnectionDetails)
-      sqlServerExtractor.getTableMetadata("dbo", "testtable", Some(Seq("testtableid1", "testtableid2"))) should be(Success(
+      sqlServerExtractor.getTableMetadata("dbo", "testtable", Some(Seq("testtableid1", "testtableid2")), None) should be(Success(
         AuditTableInfo("testtable", Seq("testtableid1", "testtableid2"), Map(
           "schemaName" -> "dbo"
           , "tableName" -> "testtable"
